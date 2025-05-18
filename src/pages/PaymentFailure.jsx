@@ -6,7 +6,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import jsPDF from "jspdf";
 import logo from "../assets/logo.jpeg";
-const PaymentFailure = ({ user }) => {
+const PaymentFailure = () => {
   const query = new URLSearchParams(useLocation().search);
   const payment_id = query.get("reference");
 
@@ -20,7 +20,7 @@ const PaymentFailure = ({ user }) => {
   }, []);
 
   return (
-    <div className="payment-success-container">
+    <div className="payment-success-container bg-gradient-to-br from-pink-100 to-red-200">
       <div className="payment-success-card">
         <h1 className="payment-failure-title">Payment Failure</h1>
         <p className="payment-message">

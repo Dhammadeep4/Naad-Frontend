@@ -10,23 +10,11 @@ const PaymentSuccess = ({ user }) => {
   const [student, setStudent] = useState({});
   const query = new URLSearchParams(useLocation().search);
   const payment_id = query.get("reference");
+  const amount = query.get("amount");
+  const remark = query.get("remarks");
   const student_id = user.student_id;
   const navigate = useNavigate();
 
-  //function to fetch fees
-  const fetchFees = async (year) => {
-    try {
-      const formattedYear = year.toLowerCase().replace(/ /g, "_");
-      const res = await axios.get(
-        `${backendUrl}/api/fee/amount/${formattedYear}`
-      );
-      if (res.data.success) return res.data.fee;
-      else toast.error(res.data.message || "Could not fetch fees.");
-    } catch (error) {
-      toast.error("Error fetching fees.");
-      console.error(error.message);
-    }
-  };
   //function to fetch profile
   const fetchProfile = async () => {
     try {
@@ -56,7 +44,7 @@ const PaymentSuccess = ({ user }) => {
 
     const name = studentProfile.firstname + " " + studentProfile.lastname;
     const year = studentProfile.year;
-    const amount = await fetchFees(year);
+    //const amount = await fetchFees(year);
     const currentDate = new Date().toLocaleDateString();
     const doc = new jsPDF("p", "mm", [120, 160]); // Set page size to A5 (portrait, in mm)
 
@@ -96,6 +84,7 @@ const PaymentSuccess = ({ user }) => {
       { label: "Student Year:", value: year },
       { label: "Paid Amount:", value: `${amount}` },
       { label: "Reference Id:", value: `${payment_id}` },
+      { label: "Remark:", value: `${remark}` },
       { label: "Payment Mode:", value: "Online" },
     ];
 
@@ -130,6 +119,7 @@ const PaymentSuccess = ({ user }) => {
         student_id,
         payment_id,
         mode: "online",
+        remark,
         amount,
         receipt: pdfBase64,
       });
@@ -164,7 +154,7 @@ const PaymentSuccess = ({ user }) => {
   }, []);
 
   return (
-    <div className="payment-container">
+    <div className="payment-container bg-gradient-to-br from-pink-100 to-red-200">
       <div className="payment-display-card">
         <h1 className="payment-success-title">Payment Successful</h1>
         <p className="payment-message">
