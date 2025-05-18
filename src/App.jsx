@@ -5,6 +5,7 @@ import StudHomepage from "./pages/StudHomepage";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PaymentFailure from "./pages/PaymentFailure";
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -56,6 +57,7 @@ function App() {
           path="/paymentSuccess"
           element={<PaymentSuccess user={user} />}
         />
+        <Route path="/paymentFailure" element={<PaymentFailure />} />
       </Routes>
     </>
   );
