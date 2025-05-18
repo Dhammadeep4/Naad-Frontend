@@ -207,6 +207,18 @@ const StudHomepage = ({ user, setUser }) => {
     };
     init();
   }, []);
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 to-red-200">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid mx-auto mb-4"></div>
+          <p className="text-lg font-semibold text-gray-700">
+            Loading student data...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 to-red-200 p-4 sm:p-6 flex flex-col items-center overflow-x-hidden">
