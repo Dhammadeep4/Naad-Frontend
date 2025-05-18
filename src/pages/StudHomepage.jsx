@@ -11,7 +11,7 @@ const StudHomepage = ({ user, setUser }) => {
   const [student, setStudent] = useState({});
   const [amount, setAmount] = useState(0);
   const [paymentHistory, setPaymentHistory] = useState([]);
-  const [feesFlag, setFeesFlag] = useState(true);
+  const [feesFlag, setFeesFlag] = useState(false);
   const [registrationFlag, setRegistrationFlag] = useState(true);
   const [registrationAmount, setRegistrationAmount] = useState(0);
   const [lastPaymentDate, setLastPaymentDate] = useState(false);
@@ -321,7 +321,7 @@ const StudHomepage = ({ user, setUser }) => {
                   <div>
                     <p>
                       <span className="font-medium">Request For:</span>{" "}
-                      {p.payment_id || "N/A"}
+                      {p.remark || "N/A"}
                     </p>
                     <p>
                       <span className="font-medium">Amount:</span> ₹{p.amount}
