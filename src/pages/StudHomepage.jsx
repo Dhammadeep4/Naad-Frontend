@@ -11,7 +11,7 @@ const StudHomepage = ({ user, setUser }) => {
   const [student, setStudent] = useState({});
   const [amount, setAmount] = useState(0);
   const [paymentHistory, setPaymentHistory] = useState([]);
-  const [feesFlag, setFeesFlag] = useState(false);
+  const [feesFlag, setFeesFlag] = useState(true);
   const [registrationFlag, setRegistrationFlag] = useState(true);
   const [registrationAmount, setRegistrationAmount] = useState(0);
   const [lastPaymentDate, setLastPaymentDate] = useState(false);
